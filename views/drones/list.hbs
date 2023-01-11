@@ -1,1 +1,15 @@
-<h2>Available drones</h2>
+<body id="drones-bg">
+  <header>
+    <nav id="nav-bar">
+      <a href="/">← Go back to Home</a>
+    </nav>
+  </header>
+  <div id="drones-main">
+    <h2>Available drones</h2>
+  </div>
+  <div>
+    {{#each drones}}
+      {{>dronePartial this}}
+    {{/each}}
+  </div>
+</body>
