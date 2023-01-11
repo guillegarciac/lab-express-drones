@@ -15,18 +15,28 @@ router.get('/drones', async (req, res, next) => {
   }
 });
 
-router.get ("/", async (req,res,next) => {
-  
-})
-
+/* GET form view */
+/* ROUTE /drones/create */
 router.get('/drones/create', (req, res, next) => {
   // Iteration #3: Add a new drone
-  // ... your code here
+  try {
+    res.render("drones/create-form");
+  } catch (error) {
+    next(error)
+  }
 });
 
-router.post('/drones/create', (req, res, next) => {
+/* POST get drone inputs */
+/* ROUTE /drones/create */
+router.post('/drones/create', async function (req, res, next) {
   // Iteration #3: Add a new drone
-  // ... your code here
+  const {name, propellers, maxSpeed} = req.body;
+  try {
+    await Drone.create({ name, propellers, maxSpeed });
+    res.redirect("/drones");
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.get('/drones/:id/edit', (req, res, next) => {
